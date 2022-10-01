@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-3">
+                    <h3 class="h3">Meus Contatos</h3>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input type="text" id="pesquisa" placeholder="Pesquise por nome ou numero" class="form-control" onkeyup="pesquisar()">
+                </div>
+                <div class="col-12 col-md-3 d-grid">
+                    <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#criarCanvas"
+                        aria-controls="criarCanvas">
+                        Adicionar contato
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <ul id="contatos" class="list-group mt-4"></ul>
+                <div class="d-flex justify-content-center mt-5">
+                    <div id="loading" class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </section>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="criarCanvas" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Adicionar contato</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form id="formCriar" onsubmit="criar()">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" class="form-control mb-2" placeholder="Seu nome" required />
+                <label for="telefone">Telefone</label>
+                <input type="text" id="telefone" class="form-control mb-2" placeholder="(00) 00000-0000" required />
+                <div class="d-grid">
+                    <button type="submit" id="criarBtn" class="btn btn-primary">Adicionar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="editarCanvas" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar contato</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form id="formEditar" onsubmit="editar()">
+                <input type="hidden" id="idEditar">
+                <label for="nome">Nome</label>
+                <input type="text" id="nomeEditar" class="form-control mb-2" placeholder="Seu nome" required />
+                <label for="telefone">Telefone</label>
+                <input type="text" id="telefoneEditar" class="form-control mb-2" placeholder="(00) 00000-0000"
+                    required />
+                <div class="d-grid">
+                    <button type="submit" id="editarBtn" class="btn btn-primary">Atualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="scripts.js"></script>
+    <script>
+        var element = document.getElementById('telefone');
+        var maskOptions = {
+            mask: '(00) 00000-0000'
+        };
+        var mask = IMask(element, maskOptions);
+        let myOffcanvas = document.getElementById('editarCanvas');
+        let bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+
+body{background-color: #EDEDED;}
+
+nav{padding: 26px 0;background-color: #FFFFFF;}
+
+#contatos{display: none;}
+.contato{width: 100%;display: flex;justify-content: space-between;align-items: center;}
+.contato .contato-nome-zero span{width: 38px;line-height: 38px; background-color: #999999;color: #FFFFFF;border-radius: 20px;text-align: center;display: block;}
+.contato .contato-nome{display: flex;align-items: center;}
+.contato .contato-nome h6{display: flex;flex-direction: column;margin-bottom: 0;}
+.contato .contato-nome h6 span{font-size: 14px;text-transform: capitalize;}
+
+@media ( max-width: 600px){
+    nav button{margin-top: 16px;}
+}
+
