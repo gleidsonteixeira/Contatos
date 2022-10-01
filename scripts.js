@@ -132,7 +132,7 @@ function editar(){
 }
 
 function pesquisar(){
-    let palavra = pesquisa.value;
+    let palavra = pesquisa.value.toLowerCase();
     if(palavra.length > 2){
         let nomes = listaParaBusca.filter((contato) =>{
             return contato.nome.toLowerCase().indexOf(palavra) >= 0;
